@@ -1,0 +1,680 @@
+## Include this file in top-level srcdir to compile FSTs
+## Copyright: Sámediggi/Divvun/UiT
+## Licence: GPL v3+
+
+# *.gt.* designates the tagset being used.
+# At the end of the makefile, there is support for automatic compilation of
+# other tagsets, given that the proper tagset relabeling files are defined,
+# and that the target files are defined as part of the 'all' target.
+#
+# Filenames are built as follows:
+# basictype-application-tagset-normativity[-dialect].fsttype
+#
+# 'application' is not specified for the regular/default morphological
+# analysis/generation.
+#
+# Examples:
+# analyser-oahpa-gt-desc.hfst
+# generator-apertium-apertium-norm_single.hfst
+# analyser-gt-desc.xfst
+#
+# Full details regarding transducer filenames can be found at:
+#
+# http://divvun.no/doc/infra/infraremake/TransducerNamesInTheNewInfra.html
+
+####### Automake targets: ########
+
+##### BEGIN Hfst target list #####
+if CAN_HFST
+
+# Always build the raw generator if hfst is enabled:
+GT_RAW_HFST=generator-raw-gt-desc.hfst
+if WANT_TWOSTEP_INTERSECT
+COMPOSE_INTERSECT_FLAG=--fast
+endif # WANT_TWOSTEP_INTERSECT
+
+if WANT_MORPHOLOGY
+GT_ANALYSERS_HFST+=analyser-gt-desc.hfstol \
+				   analyser-gt-norm.hfstol \
+				   analyser-disamb-gt-desc.hfstol
+GT_ANALYSERS_HFST_NO_INSTALL=analyser-gt-desc.hfst
+endif # WANT_MORPHOLOGY
+
+if WANT_GENERATION
+GT_GENERATORS_HFST+=generator-gt-desc.hfstol \
+					generator-gt-norm.hfstol 
+endif # WANT_GENERATION
+
+endif # CAN_HFST
+##### END Hfst target list #####
+
+##### BEGIN Xerox target list #####
+if CAN_XFST
+
+# Always build the raw analsyer if Xerox is enabled:
+GT_RAW_XFST=analyser-raw-gt-desc.xfst
+
+if WANT_MORPHOLOGY
+GT_ANALYSERS_XFST+=analyser-gt-desc.xfst \
+				   analyser-gt-norm.xfst \
+				   analyser-disamb-gt-desc.xfst
+endif # WANT_MORPHOLOGY
+
+if WANT_GENERATION
+GT_GENERATORS_XFST+=generator-gt-desc.xfst \
+					generator-gt-norm.xfst
+endif # WANT_GENERATION
+
+endif # CAN_XFST
+##### END Xerox target list #####
+
+hfstdatadir=$(datadir)/giella/$(GTLANG)
+hfstdata_DATA=$(GT_ANALYSERS_HFST)       \
+			  $(GT_GENERATORS_HFST)      \
+			  $(ALT_WS_ANALYSERS_HFST)   \
+			  $(ALT_WS_GENERATORS_HFST)  \
+			  $(ALT_ORTH_ANALYSERS_HFST) \
+			  $(ALT_ORTH_GENERATORS_HFST)
+
+noinst_DATA=$(GT_ANALYSERS_XFST)        \
+			$(GT_GENERATORS_XFST)       \
+			$(ALT_WS_ANALYSERS_XFST)    \
+			$(ALT_WS_GENERATORS_XFST)   \
+			$(ALT_ORTH_ANALYSERS_XFST)  \
+			$(ALT_ORTH_GENERATORS_XFST) \
+			$(GT_RAW_HFST)              \
+			$(GT_RAW_XFST)              \
+			$(GT_ANALYSERS_HFST_NO_INSTALL)
+
+##################################################
+######## Build rules for Xerox and HFST: #########
+#
+#       Each target transducer is defined together
+#       for both transducer types,
+#       first for HFST then for Xerox. This
+#       makes it easy to check that the build
+#       is parallell for the two transducer
+#       types.
+##################################################
+
+# The "raw" transducer contains all tags and symbols available on the analysis
+# side. Some of them are optional for generation, some are only needed for
+# special tools. On the lower side, the raw transducer contains all
+# morphological boundaries and hyphenation symbols. As such, this transducer
+# can NOT be used for morphological analysis, and hardly for generation.
+
+# First build a tmp1 raw file as the intersection between lexicon and rules:
+generator-raw-gt-desc.tmp1.hfst: morphology/lexicon.hfst \
+					 phonology/$(GTLANG)-phon.compose.hfst
+	$(AM_V_INTRSCT)$(HFST_DETERMINIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) $< \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+		| $(HFST_COMPOSE_INTERSECT) $(COMPOSE_INTERSECT_FLAG) \
+			$(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-2 phonology/$(GTLANG)-phon.compose.hfst \
+		| $(HFST_MINIMIZE) $(MORE_VERBOSITY) $(HFST_FLAGS) -o $@
+
+analyser-raw-gt-desc.tmp1.xfst: morphology/lexicon.xfst \
+			 phonology/$(GTLANG)-phon.compose.xfst
+	$(AM_V_LEXC)$(PRINTF) \
+		"read-source morphology/lexicon.xfst\nread-rules phonology/$(GTLANG)-phon.compose.xfst\ncompose-result\nsave-result $@\nquit\n" \
+		| $(LEXC) $(VERBOSITY)
+
+# ... then apply tag reordering to tmp1 to ensure the same tag order in all
+# subsequent processing; this creates the regular tmp file, which can further
+# get local processing to produce the final raw file:
+generator-raw-gt-desc.tmp.hfst: generator-raw-gt-desc.tmp1.hfst \
+					filters/reorder-semantic-tags.hfst          \
+					filters/reorder-subpos-tags.hfst            \
+					filters/remove-mwe-tags.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+				@\"filters/reorder-subpos-tags.hfst\"   \
+			.o. @\"filters/reorder-semantic-tags.hfst\" \
+			.o. @\"filters/remove-mwe-tags.hfst\"       \
+			.o. @\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(MORE_VERBOSITY) $(HFST_FLAGS) \
+			-S --xerox-composition=ON \
+			-X flag-is-epsilon \
+		> $@
+
+analyser-raw-gt-desc.tmp.xfst: analyser-raw-gt-desc.tmp1.xfst \
+					filters/reorder-semantic-tags.xfst        \
+					filters/reorder-subpos-tags.xfst          \
+					filters/remove-mwe-tags.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/reorder-subpos-tags.xfst\"   \
+			.o. @\"filters/reorder-semantic-tags.xfst\" \
+			.o. @\"filters/remove-mwe-tags.xfst\"       \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# To get a transducer usable for a certain application, the raw transducer needs
+# to be filtered and manipulated to get the target tag set and surface symbols.
+# That is done in all subsequent targets, which builds on the raw transducer
+# built above.
+
+# This is the default, descriptive analyser:
+# Visible tags (ie do NOT remove):
+#   - variant tags
+#   - the Err/Orth tag
+# Invisible tags (ie to be removed):
+#   - semantic tags
+#   - homonymy tags
+analyser-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst            \
+					filters/remove-adv_comp-tags.hfst            \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst             \
+					filters/remove-norm-comp-tags.hfst           \
+					filters/remove-number-string-tags.hfst       \
+					filters/remove-usage-tags.hfst               \
+					filters/remove-semantic-tags.hfst            \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
+					filters/remove-orig_lang-tags.hfst           \
+					orthography/inituppercase.compose.hfst       \
+					orthography/spellrelax.compose.hfst          \
+					orthography/downcase-derived_proper-strings.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
+				@\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-adv_comp-tags.hfst\"            \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-semantic-tags.hfst\"            \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			; \n\
+			define fst \n\
+			set flag-is-epsilon ON\n\
+			read regex fst \
+			.o. @\"orthography/inituppercase.compose.hfst\"       \
+			.o. @\"orthography/spellrelax.compose.hfst\"          \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+
+analyser-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst             \
+					filters/remove-adv_comp-tags.xfst            \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst             \
+					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-number-string-tags.xfst       \
+					filters/remove-usage-tags.xfst               \
+					filters/remove-semantic-tags.xfst            \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
+					filters/remove-orthography-tags.xfst         \
+					filters/remove-Orth_IPA-strings.xfst         \
+					filters/remove-orig_lang-tags.xfst           \
+					orthography/inituppercase.compose.xfst       \
+					orthography/spellrelax.compose.xfst          \
+					orthography/downcase-derived_proper-strings.compose.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-adv_comp-tags.xfst\"            \
+			.o. @\"filters/remove-dialect-tags.xfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-number-string-tags.xfst\"       \
+			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-semantic-tags.xfst\"            \
+			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
+			.o. @\"filters/remove-orthography-tags.xfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			; \n\
+			define fst \n\
+			set flag-is-epsilon ON\n\
+			read regex fst \
+			.o. @\"orthography/inituppercase.compose.xfst\"       \
+			.o. @\"orthography/spellrelax.compose.xfst\"          \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# This is the default, descriptive generating transducer.
+generator-gt-desc.tmp.hfst: generator-raw-gt-desc.hfst           \
+					filters/make-optional-transitivity-tags.hfst \
+					filters/make-optional-homonymy-tags.hfst     \
+					filters/make-optional-hyph-tags.hfst         \
+					filters/make-optional-variant-tags.hfst      \
+					filters/make-optional-semantic-tags.hfst     \
+					filters/make-optional-error-tags.hfst        \
+					filters/make-optional-adv_comp-tags.hfst     \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst             \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
+					filters/remove-norm-comp-tags.hfst           \
+					filters/remove-number-string-tags.hfst       \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
+					filters/remove-orig_lang-tags.hfst           \
+					filters/remove-usage-tags.hfst               \
+					orthography/downcase-derived_proper-strings.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
+				@\"filters/make-optional-transitivity-tags.hfst\" \
+			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.hfst\"         \
+			.o. @\"filters/make-optional-variant-tags.hfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
+			.o. @\"filters/make-optional-error-tags.hfst\"        \
+			.o. @\"filters/make-optional-adv_comp-tags.hfst\"     \
+			.o. @\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+
+generator-gt-desc.tmp.xfst: analyser-raw-gt-desc.xfst            \
+					filters/make-optional-transitivity-tags.xfst \
+					filters/make-optional-homonymy-tags.xfst     \
+					filters/make-optional-hyph-tags.xfst         \
+					filters/make-optional-variant-tags.xfst      \
+					filters/make-optional-semantic-tags.xfst     \
+					filters/make-optional-error-tags.xfst        \
+					filters/make-optional-adv_comp-tags.xfst     \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst             \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
+					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-number-string-tags.xfst       \
+					filters/remove-orthography-tags.xfst         \
+					filters/remove-Orth_IPA-strings.xfst         \
+					filters/remove-orig_lang-tags.xfst           \
+					filters/remove-usage-tags.xfst               \
+					orthography/downcase-derived_proper-strings.compose.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.xfst\" \
+			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.xfst\"         \
+			.o. @\"filters/make-optional-variant-tags.xfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
+			.o. @\"filters/make-optional-error-tags.xfst\"        \
+			.o. @\"filters/make-optional-adv_comp-tags.xfst\"     \
+			.o. @\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-dialect-tags.xfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-number-string-tags.xfst\"       \
+			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
+			.o. @\"filters/remove-orthography-tags.xfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# This is the normative analyser:
+# Remove sub-standard/error forms to get a normative transducer
+analyser-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst            \
+					filters/remove-adv_comp-tags.hfst            \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst             \
+					filters/remove-variant-tags.hfst             \
+					filters/remove-norm-comp-tags.hfst           \
+					filters/remove-number-string-tags.hfst       \
+					filters/remove-usage-tags.hfst               \
+					filters/remove-error-strings.hfst            \
+					filters/remove-semantic-tags.hfst            \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
+					filters/remove-orig_lang-tags.hfst           \
+					orthography/inituppercase.compose.hfst       \
+					orthography/downcase-derived_proper-strings.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
+				@\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-adv_comp-tags.hfst\"            \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-variant-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-error-strings.hfst\"            \
+			.o. @\"filters/remove-semantic-tags.hfst\"            \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			; \n\
+			define fst \n\
+			set flag-is-epsilon ON\n\
+			read regex fst \
+			.o. @\"orthography/inituppercase.compose.hfst\"       \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+
+analyser-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst             \
+					filters/remove-adv_comp-tags.xfst            \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst             \
+					filters/remove-variant-tags.xfst             \
+					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-number-string-tags.xfst       \
+					filters/remove-usage-tags.xfst               \
+					filters/remove-error-strings.xfst            \
+					filters/remove-semantic-tags.xfst            \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
+					filters/remove-orthography-tags.xfst         \
+					filters/remove-Orth_IPA-strings.xfst         \
+					filters/remove-orig_lang-tags.xfst           \
+					orthography/inituppercase.compose.xfst       \
+					orthography/downcase-derived_proper-strings.compose.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-adv_comp-tags.xfst\"            \
+			.o. @\"filters/remove-dialect-tags.xfst\"             \
+			.o. @\"filters/remove-variant-tags.xfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-number-string-tags.xfst\"       \
+			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-semantic-tags.xfst\"            \
+			.o. @\"filters/remove-error-strings.xfst\"            \
+			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
+			.o. @\"filters/remove-orthography-tags.xfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			; \n\
+			define fst \n\
+			set flag-is-epsilon ON\n\
+			read regex fst \
+			.o. @\"orthography/inituppercase.compose.xfst\"       \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# This is the normative generating transducer.
+generator-gt-norm.tmp.hfst: generator-raw-gt-desc.hfst           \
+					filters/make-optional-transitivity-tags.hfst \
+					filters/make-optional-homonymy-tags.hfst     \
+					filters/make-optional-hyph-tags.hfst         \
+					filters/make-optional-variant-tags.hfst      \
+					filters/make-optional-semantic-tags.hfst     \
+					filters/make-optional-adv_comp-tags.hfst     \
+					filters/remove-derivation-position-tags.hfst \
+					filters/remove-dialect-tags.hfst             \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst            \
+					filters/remove-norm-comp-tags.hfst           \
+					filters/remove-number-string-tags.hfst       \
+					filters/remove-usage-tags.hfst               \
+					filters/remove-orthography-tags.hfst         \
+					filters/remove-Orth_IPA-strings.hfst         \
+					filters/remove-orig_lang-tags.hfst           \
+					filters/remove-error-strings.hfst            \
+					orthography/downcase-derived_proper-strings.compose.hfst
+	$(AM_V_HXFST)$(PRINTF) "set xerox-composition ON \n\
+			read regex \
+				@\"filters/make-optional-transitivity-tags.hfst\" \
+			.o. @\"filters/make-optional-homonymy-tags.hfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.hfst\"         \
+			.o. @\"filters/make-optional-variant-tags.hfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.hfst\"     \
+			.o. @\"filters/make-optional-adv_comp-tags.hfst\"     \
+			.o. @\"filters/remove-derivation-position-tags.hfst\" \
+			.o. @\"filters/remove-dialect-tags.hfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.hfst\"           \
+			.o. @\"filters/remove-number-string-tags.hfst\"       \
+			.o. @\"filters/remove-usage-tags.hfst\"               \
+			.o. @\"filters/remove-error-strings.hfst\"            \
+			.o. @\"filters/remove-orig_lang-tags.hfst\"           \
+			.o. @\"filters/remove-orthography-tags.hfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.hfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.hfst\" \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\"       \
+			.o. @\"filters/remove-word-boundary.hfst\"            \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(HFST_XFST) -p $(VERBOSITY)
+
+generator-gt-norm.tmp.xfst: analyser-raw-gt-desc.xfst            \
+					filters/make-optional-transitivity-tags.xfst \
+					filters/make-optional-homonymy-tags.xfst     \
+					filters/make-optional-hyph-tags.xfst         \
+					filters/make-optional-variant-tags.xfst      \
+					filters/make-optional-semantic-tags.xfst     \
+					filters/make-optional-adv_comp-tags.xfst     \
+					filters/remove-derivation-position-tags.xfst \
+					filters/remove-dialect-tags.xfst             \
+					filters/remove-hyphenation-marks.xfst        \
+					filters/remove-infl_deriv-borders.xfst       \
+					filters/remove-word-boundary.xfst            \
+					filters/remove-norm-comp-tags.xfst           \
+					filters/remove-number-string-tags.xfst       \
+					filters/remove-usage-tags.xfst               \
+					filters/remove-orthography-tags.xfst         \
+					filters/remove-Orth_IPA-strings.xfst         \
+					filters/remove-orig_lang-tags.xfst           \
+					filters/remove-error-strings.xfst            \
+					orthography/downcase-derived_proper-strings.compose.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+				@\"filters/make-optional-transitivity-tags.xfst\" \
+			.o. @\"filters/make-optional-homonymy-tags.xfst\"     \
+			.o. @\"filters/make-optional-hyph-tags.xfst\"         \
+			.o. @\"filters/make-optional-variant-tags.xfst\"      \
+			.o. @\"filters/make-optional-semantic-tags.xfst\"     \
+			.o. @\"filters/make-optional-adv_comp-tags.xfst\"     \
+			.o. @\"filters/remove-derivation-position-tags.xfst\" \
+			.o. @\"filters/remove-dialect-tags.xfst\"             \
+			.o. @\"filters/remove-norm-comp-tags.xfst\"           \
+			.o. @\"filters/remove-number-string-tags.xfst\"       \
+			.o. @\"filters/remove-usage-tags.xfst\"               \
+			.o. @\"filters/remove-error-strings.xfst\"            \
+			.o. @\"filters/remove-orig_lang-tags.xfst\"           \
+			.o. @\"filters/remove-orthography-tags.xfst\"         \
+			.o. @\"filters/remove-Orth_IPA-strings.xfst\"         \
+			.o. @\"$<\" \
+			.o. @\"orthography/downcase-derived_proper-strings.compose.xfst\" \
+			.o. @\"filters/remove-hyphenation-marks.xfst\"        \
+			.o. @\"filters/remove-infl_deriv-borders.xfst\"       \
+			.o. @\"filters/remove-word-boundary.xfst\"            \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Create generic tagset variants of *analyzers*
+# HFST:
+# Standard descriptive
+analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.relabel
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
+
+# Relabeling using compiled regex:
+analyser-%-desc.hfst: analyser-gt-desc.hfst tagsets/%.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"$<\" \
+			.o. @\"tagsets/$*.hfst\".i \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
+# Standard normative
+analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.relabel
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
+
+# Relabeling using compiled regex:
+analyser-%-norm.hfst: analyser-gt-norm.hfst tagsets/%.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"$<\" \
+			.o. @\"tagsets/$*.hfst\".i \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
+# Create tagset variants of *generators*
+# Standard descriptive
+generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.relabel
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
+
+# Relabeling using compiled regex:
+generator-%-desc.hfst: generator-gt-desc.hfst tagsets/%.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"tagsets/$*.hfst\" \
+			.o. @\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
+# Standard normative
+generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.relabel
+	$(AM_V_FST2FST)$(HFST_FST2FST) $(HFSTFLAGS) -t $< \
+		| $(HFST_SUBSTITUTE) $(HFSTFLAGS) -F $(srcdir)/tagsets/$*.relabel \
+		| $(HFST_FST2FST) $(HFSTFLAGS) -w \
+		-o $@
+
+# Relabeling using compiled regex:
+generator-%-norm.hfst: generator-gt-norm.hfst tagsets/%.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			    @\"tagsets/$*.hfst\" \
+			.o. @\"$<\" \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
+# XEROX/XFST:
+# Standard descriptive
+analyser-%-desc.xfst: analyser-gt-desc.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"tagsets/$*.xfst\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Standard normative
+analyser-%-norm.xfst: analyser-gt-norm.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"tagsets/$*.xfst\" \
+			.o. @\"$<\" \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Create tagset variants of *generators*
+# Standard descriptive
+generator-%-desc.xfst: generator-gt-desc.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"$<\" \
+			.o. @\"tagsets/$*.xfst\".i \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+# Standard normative
+generator-%-norm.xfst: generator-gt-norm.xfst tagsets/%.xfst
+	$(AM_V_XFST)$(PRINTF) "read regex \
+			    @\"$<\" \
+			.o. @\"tagsets/$*.xfst\".i \
+			;\n\
+		 save stack $@\n\
+		 quit\n" | $(XFST) $(VERBOSITY)
+
+
+# lemmatization is a special case of tagset variant
+lemmatize.default.hfst: analyser-gt-desc.hfst tagsets/lemmatize.relabel
+	$(AM_V_HSUBST)$(HFST_SUBSTITUTE) $(HFSTFLAGS) \
+		-F $(srcdir)/tagsets/lemmatize.relabel -i $< -o $@
+
+# morpher is a morph segmenting variant: taloautoissani -> talo#auto>i>ssa>ni
+morpher-gt-desc.hfst: generator-raw-gt-desc.hfst \
+					 orthography/inituppercase.compose.hfst \
+					 orthography/spellrelax.compose.hfst \
+					filters/remove-hyphenation-marks.hfst        \
+					filters/remove-infl_deriv-borders.hfst       \
+					filters/remove-word-boundary.hfst
+	$(AM_V_RGX2FST)$(PRINTF) "\
+			 [ [@\"$<\" \
+				.o. @\"orthography/inituppercase.compose.hfst\"         \
+				.o. @\"orthography/spellrelax.compose.hfst\"  ].l       \
+			.o. @\"filters/remove-hyphenation-marks.hfst\"  \
+			.o. @\"filters/remove-infl_deriv-borders.hfst\" \
+			.o. @\"filters/remove-word-boundary.hfst\"  ].i \
+			;" \
+		| $(HFST_REGEXP2FST) $(HFST_FLAGS) -S --xerox-composition=ON \
+		> $@
+
+####### Other targets: ###########
+
+# Copy the raw transducer. This enables language-specific processing of the raw
+# transducer, if required.
+%-raw-gt-desc.xfst: %-raw-gt-desc.tmp.xfst
+	$(AM_V_CP)cp -f $< $@
+
+%-raw-gt-desc.hfst: %-raw-gt-desc.tmp.hfst
+	$(AM_V_CP)cp -f $< $@
+
+# cleaning
+clean-local:
+	-rm -f *.hfst *.xfst
+
+include $(top_srcdir)/am-shared/src_oahpa-include.am
+include $(top_srcdir)/am-shared/src_dictionary-include.am
+include $(top_srcdir)/am-shared/src_disamb-include.am
+include $(top_srcdir)/am-shared/src_alt_ws-include.am
+include $(top_srcdir)/am-shared/src_alt_orth-include.am
+include $(top_srcdir)/am-shared/lookup-include.am
+include $(top_srcdir)/am-shared/silent_build-include.am
+
+# vim: set ft=automake:

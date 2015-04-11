@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=@libdir@
+datadir=@datarootdir@
+gtlang=khk
+dir=${datadir}/giella/${gtlang}
+srcdir=${datadir}/giella/${gtlang}
+
+Name: giella-khk
+Description: Finite-state language processing tools for Halh Mongolian
+URL: http://giellatekno.uit.no/doc/index.html
+Version: @VERSION@

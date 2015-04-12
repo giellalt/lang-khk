@@ -1,8 +1,74 @@
-!! Pronouns
-!! --------
-!! Pronouns in UNDEFINED language are references to things.
 
 LEXICON Pronouns
-pronoun    Cases   ;
 
-! vim: set ft=xfst-lexc:
+би+Pron+Pers+p1+Sg+Nom:би Clit ;
+би+Pron+Pers+p1+Sg+Acc:намайг Clit ;
+би+Pron+Pers+p1+Sg+Gen:миний Clit ;
+би+Pron+Pers+p1+Sg+Abl:надаас Clit ;
+би+Pron+Pers+p1+Sg+Dat:надад Clit ;
+би+Pron+Pers+p1+Sg+Ins:надаар Clit ;
+би+Pron+Pers+p1+Sg+Px:минийх Clit ;    ! FIXME: check
+би+Pron+Pers+p1+Sg+Gens:минь Clit ;
+
+бид+Pron+Pers+p1+Pl+Nom:бид Clit ;
+бид+Pron+Pers+p1+Pl+Acc:биднийг Clit ;
+бид+Pron+Pers+p1+Pl+Gen:бидний Clit ;
+бид+Pron+Pers+p1+Pl+Abl:биднээс Clit ;
+бид+Pron+Pers+p1+Pl+Dat:бидэнд Clit ;
+бид+Pron+Pers+p1+Pl+Ins:биднээр Clit ;
+бид+Pron+Pers+p1+Pl+Px:биднийх Clit ; ! FIXME: Check
+
+чи+Pron+Pers+p2+Sg+Nom:чи Clit ;
+чи+Pron+Pers+p2+Sg+Acc:чамайг Clit ;
+чи+Pron+Pers+p2+Sg+Gen:чиний Clit ;
+чи+Pron+Pers+p2+Sg+Abl:чамаас Clit ;
+чи+Pron+Pers+p2+Sg+Dat:чамд Clit ;
+чи+Pron+Pers+p2+Sg+Ins:чамаар Clit ;  ! FIXME: check
+чи+Pron+Pers+p2+Sg+Px:чинийх Clit ;    ! FIXME: check
+чи+Pron+Pers+p2+Sg+Gens:чинь Clit ;
+
+та+Pron+Pers+p2+Frm+Nom:та Clit ;
+та+Pron+Pers+p2+Frm+Acc:таныг Clit ;
+та+Pron+Pers+p2+Frm+Gen:таны Clit ;
+!та+Pron+Pers+p2+Frm+Abl:та Clit ;    ! FIXME: check
+та+Pron+Pers+p2+Frm+Dat:танд Clit ;
+!та+Pron+Pers+p2+Frm+Ins:та Clit ;  ! FIXME: check
+та+Pron+Pers+p2+Frm+Px:таных Clit ;   ! FIXME: check
+та+Pron+Pers+p2+Frm+Gens:тань Clit ;
+
+тэр+Pron+Pers+p3+Sg+Nom:тэр Clit ;
+тэр+Pron+Pers+p3+Sg+Acc:түүнийг Clit ;
+тэр+Pron+Pers+p3+Sg+Gen:түүний Clit ;
+тэр+Pron+Pers+p3+Sg+Abl:түүнээс Clit ;
+тэр+Dem+p3+Sg+Dat:тэнд Clit ;     ! loc
+тэр+Pron+Pers+p3+Sg+Dat:түүнд Clit ;    ! dat/loc
+тэр+Pron+Pers+p3+Sg+Ins:тэрээр Clit ;  ! FIXME: check
+тэр+Pron+Pers+p3+Sg+Px:түүнийх Clit ;   ! FIXME: check
+тэр+Pron+Pers+p3+Sg+Gens:нь Clit ;
+
+тэд+Pron+Pers+p3+Pl+Nom:тэд Clit ;
+тэд+Pron+Pers+p3+Pl+Acc:тэднийг Clit ;
+тэд+Pron+Pers+p3+Pl+Gen:тэдний Clit ;
+тэд+Pron+Pers+p3+Pl+Abl:тэднээс Clit ;
+тэд+Pron+Pers+p3+Pl+Dat:тэдэнд Clit ;   ! FIXME: check
+тэд+Pron+Pers+p3+Pl+Ins:тэднээр Clit ; ! FIXME: check
+тэд+Pron+Pers+p3+Pl+Px:тэднийх Clit ;   ! FIXME: check
+тэд+Pron+Pers+p3+Pl+Gens:нь Clit ;
+
+хэн PrnInfl ;            ! "who"
+юу PrnInfl ;             ! "what"
+өөр PrnInfl ;            ! "oneself"
+энэ:эн PrnInfl ;         ! "this one"
+ямар:ям%{а%}р PrnInfl ;  ! "which one"
+тийм:тийм PrnInfl ;      ! "one like that"
+ийм:ийм PrnInfl ;        ! "one like this"
+бүгд:бүгд PrnInfl ;      ! "everyone"
+
+LEXICON Determiners
+
+энэ:энэ DetInfl ;        ! "this"
+ямар:ям%{а%}р DetInfl ;  ! "which"
+бүх:бүх DetInfl ;        ! "entire, all, the whole"
+тийм:тийм DetInfl ;      ! "such a"
+ийм:ийм DetInfl ;        ! "such a"
+бүгд:бүгд DetInfl ;      ! "all"

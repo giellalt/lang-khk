@@ -1,16 +1,36 @@
-!! Verb inflection
-!! ---------------
-!! The UNDEFINED language verbs inflect in persons.
 
-LEXICON Persons
-+V+1sg:en   #   ;
-+V+2sg:et   #   ;
-+V+3sg:e    #   ;
-+V+1pl:ien  #   ;
-+V+2pl:iet  #   ;
-+V+3pl:iet  #   ;
-+V+inf:0    #   ;
-#:0   Nouns   ;
+LEXICON Vinfl-Common
 
-! vim: set ft=xfst-lexc:
++Aori:%>н%{А%} # ;
++Aori+Neg:%>%{а%}хгүй Clit ; ! can take юу/юү, but can it take вэ?
++Aori:%{а%}х Clit-Qst ;
 
++Pst:%>с%{а%}н Clit ;
++Pst+Neg:%>%{г%}%{А1%}%{А2%}гүй Clit ;
++Pst:%>%{а%}в # ;  ! FIXME: figure this out
+
++Pst+Evi:жээ # ;
+
++Ifi:%>л%{А1%}%{А2%} # ;
++Hab:%>д%{а%}г Clit ;
+
++Ger:%>%{а%}х Cases-Normal ;
++Ger_Imp:%>д%{а%}г Cases-Normal ;
++Ger:%>с%{а%}н Cases-Normal ;
+
++Gna:%>%{а%}%{Ж%} # ;
++Gna_imp:%>%{а%}н # ;
++Gna_Prf:%>%{г%}%{А1%}%{А2%}д # ;
++Cna_Cnd:%>%{В%}%{А%}л # ;
++Cna_Cnd:%>%{Т%}%{А%}л # ;
+
++Imp:%>%{А1%}%{А2%}р%{А%}й # ;     ! simple imperative
++Sug:%>%{А1%}%{А2%}ч # ;           ! suggestion
+
+LEXICON Vinfl-TV
+
++V+TV: Vinfl-Common ;
+
+LEXICON Vinfl-IV
+
++V+IV: Vinfl-Common ;

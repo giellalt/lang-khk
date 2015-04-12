@@ -1,0 +1,27 @@
+LEXICON ProperNouns
+
+Израил:Израил NP-COG-M ;    ! "Israel"
+Есүс:Есүс NP-COG-M ;        ! "Jesus"
+Давид:Давид NP-COG-M ;      ! "David"
+Иуда:Иуда NP-COG-M ;        ! "Judah"
+Мосе:Мосе NP-COG-M ;        ! "Moses"
+
+олимп:олимп NP-ORG ;        ! "Olympics"
+
+Иерусалим:Иерусалим NP-TOP ; ! "Jerusalem"
+
+Европ:Европ NP-TOP ; ! "Europe"
+Ази:Ази NP-TOP ; ! "Asia"
+
+!!!!!! Countries !!!!!!
+
+Египет:Египет NP-TOP ; ! "Egypt"
+Монгол:Монгол NP-TOP ; ! "Mongolia"
+Америк:Америк NP-TOP ; ! "America"
+Хятад:Хятад NP-TOP ; ! "China"
+Англи:Англи NP-TOP ; ! "England"
+
+
+! Сяньби:Сяньби NP-?? ; ! "Sienbei"
+! Хүннү:Хүннү NP-?? ; ! "Xiongnu"
+

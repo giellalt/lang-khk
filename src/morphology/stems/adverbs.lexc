@@ -1,0 +1,36 @@
+
+LEXICON PostAdv-Infl
+
++Post+Adv: # ;
+
+
+LEXICON Adv
+
++Adv: # ;
+
+
+LEXICON Postadverbs
+
+ч:ч PostAdv-Infl ; ! "not any"
+хамт:хамт PostAdv-Infl ; ! "together"
+биш:биш PostAdv-Infl ; ! "not"
+л:л PostAdv-Infl ; ! "only"
+
+
+LEXICON Adverbs
+
+сайн:сайн Adv ; ! "well"
+их:их Adv ; ! "very"
+дахин:дахин Adv ; ! "again"
+одоо:ороо Adv ; ! "now"
+сая:сая Adv ; ! "just now"
+мөн:мөн Adv ; ! "right, truly"
+ягаад:ягаад Adv ; ! "why"
+тийм:тийм Adv ; ! "in such a way"
+илүү:илүү Adv ; ! "rather"
+маргааш:маргааш Adv ; ! "tomorrow"
+өнөөдөр:өнөөдөр Adv ; ! "today"
+өчигдөр:өчигдөр Adv ; ! "yesterday"
+хамгийн:хамгийн Adv ; ! "most"
+бүхий:бүхий Adv ; ! "entirely, fully"
+маш:маш Adv ; ! "very (with other adv)"

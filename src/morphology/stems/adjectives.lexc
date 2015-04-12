@@ -1,8 +1,49 @@
-!! Adjectives
-!! ----------
-!! Adjectives in UNDEFINED language describe things.
+
+LEXICON Adj
+
++A: # ;
++A+N: Cases-Normal ;
+
+
+
 
 LEXICON Adjectives
-adjective    Comparisons   ;
 
-! vim: set ft=xfst-lexc:
+ариун:ариун Adj ; ! "pure"
+сайхан:сайхан Adj ; ! "good"
+муу:муу Adj ; ! "bad"
+зөв:зөв Adj ; ! "correct"
+ёстой:ёстой Adj ; ! "necessary"
+хэрэгтэй:хэрэгтэй Adj ; ! "necessary"
+эмэгтэй:эмэгтэй Adj ; ! "female / woman"
+эрэгтэй:эрэгтэй Adj ; ! "male / man"
+адил:адил Adj ; ! "same"
+адилхан:адилхан Adj ; ! "similar"
+шинэ:шинэ Adj ; ! "new"
+том:том Adj ; ! "big"
+жижиг:жиж%{а%}г Adj ; ! "small"
+жижигхэн:жижигх%{а%}н Adj ; ! "little"
+цагаан:цагаа%{ң%} Adj ; ! "white"   ! FIXME: check ң
+улаан:улаа%{ң%} Adj ; ! "red"       ! FIXME: check ң
+дулаан:дулаа%{ң%} Adj ; ! "warm"    ! FIXME: check ң
+чухал:чух%{а%}л Adj ; ! "important"
+амархан:амархан Adj ; ! "easy"
+хэзүү:хэзүү Adj ; ! "hard"
+буруу:буруу Adj ; ! "wrong, incorrect"
+түгээмэл:түгээмэл Adj ; ! "general"
+өндөр:өндөр Adj ; ! "high"
+шигшээ:шигшээ Adj ; ! "qualifying/championship/final [game]"
+дээд:дээд Adj ; ! "uppder, top"
+тэргүүн:тэргүүн Adj ; ! "main, primary"
+төв:төв Adj ; ! "central"
+бусад:бус%{а%}д Adj ; ! "other"
+үндсэн:үндс%{а%}н Adj ; ! "basic, fundamental"
+эсрэг:эсрэг Adj ; ! "reverse"
+алдартай:алдартай Adj ; ! "famous"
+
+
+зүүн:зүүн Adj ; ! "east"
+хойд:хойд Adj ; ! "north"
+баруун:баруун Adj ; ! "west"
+өмнө:өмнө Adj ; ! "south"
+

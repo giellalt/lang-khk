@@ -1,8 +1,19 @@
-!! Numerals
-!! --------
-!! Numerals in UNDEFINED language are numbers.
 
-LEXICON Numerals
-numeral    Cases   ;
+LEXICON Num
 
-! vim: set ft=xfst-lexc:
++Num: Cases-Normal ;
+
+LEXICON Numbers
+
+нэг:нэг Num ;            ! "one"
+хоёр:хоёр Num ;          ! "two"
+гурав:гур%{а%}в Num ;    ! "three"
+дөрөв:дөр%{а%}в Num ;    ! "four"
+тав:тав Num ;            ! "five"
+зургаа:зургаа Num ;      ! "six"
+долоо:долоо Num ;        ! "seven"
+найм:найм Num ;          ! "eight"
+ёс:ёс Num ;              ! "nine"
+арав:ар%{а%}в Num ;      ! "ten"
+зуун:зуун Num ;          ! "hundred"
+мянга:мянга Num ;        ! "thousand"

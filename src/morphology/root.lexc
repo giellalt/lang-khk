@@ -1,146 +1,216 @@
-! Divvun & Giellatekno - open source grammars for UNDEFINED language
-! Copyright © 2012 The University of Tromsø & the Norwegian Sámi Parliament
-! http://giellatekno.uit.no & http://divvun.no
-!
-! This program is free software; you can redistribute and/or modify
-! this file under the terms of the GNU General Public License as published by
-! the Free Software Foundation, either version 3 of the License, or
-! (at your option) any later version. The GNU General Public License
-! is found at http://www.gnu.org/licenses/gpl.html. It is
-! also available in the file $GTHOME/LICENSE.txt.
-!
-! Other licensing options are available upon request, please contact
-! giellatekno@hum.uit.no or divvun@samediggi.no
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!  M O R P H O L O G I C A L · T R A N S D U C E R · F O R · K H A L K H A  !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-! ========================================================================== !
-! !!            !!!Halh Mongolian morphological analyser                      !
-! ========================================================================== !
-!! INTRODUCTION TO MORPHOLOGICAL ANALYSER OF Halh Mongolian LANGUAGE.
- 
+! See http://wiki.apertium.org/wiki/Turkic_lexicon
 
-Multichar_Symbols  !!≈ !!!@CODE@ definitions
+Multichar_Symbols
+! Followed http://wiki.apertium.org/wiki/Turkic_languages
 
-!! !!Analysis symbols
-!! ----------------
-!! The morphological analyses of wordforms of UNDEFINED language are presented
-!! in this system in terms of following symbols.
-!! (It is highly suggested to follow existing standards when adding new tags).
+! Part of speech categories
++N         ! Noun                       ! Зат есім
++N+Prop        ! Proper noun
++A       ! Adjective                  ! Сын есім
++Num       ! Numeral                    ! Сан есім
++Pron       ! Pronoun
++Det       ! Determiner
++V         ! Verb
++V+Aux      ! Auxilary verb
++Adv       ! Adverb                     ! Үстеу            ! Наречие
++Post      ! Postposition               ! Септеулік шылау
++Post+Adv   ! Postadverb                 ! "Артүстеу"
++CC    ! Co-ordinating conjunction  ! жалғаулық шылау
++CS    ! Sub-ordinating conjunction ! жалғаулық шылау
++CC+Adv    ! Adverbial conjunction      ! жалғаулық шылау
++Par      ! Particle
++Interj        ! Interjection               ! Одағай
++Abbr      ! Abbreviation
++Cop       ! Copula
 
-!! The parts-of-speech are:
- +N +A +Adv +V                                 !!≈
- +Pron +CS +CC +Adp +Po +Pr +Interj +Pcle +Num !!≈
+! Proper noun types
++Top       ! Toponym
++Ant       ! Anthroponym
++Cog       ! Cognomen
++Pat       ! Patronym     ! Отчество
++Org       ! Organization
++Al        ! Other
 
-!! The parts of speech are further split up into:
- +Prop +Pers +Dem +Interr +Refl +Recipr +Rel +Indef
+!! gender of anthroponyms and cognoms
++Msc         ! Masculine
++Fem         ! Feminine
++MF        ! Masculine/feminine !# basically cognoms without -ов/-ова,
+              ! -ин/-ина endings
 
-!! The Usage extents are marked using following tags:
- +Err/Orth   
- +Use/-Spell 
+! "Syntactic" tags. Attributive use of non-adjectives etc.
++Attr      ! Attributive
++N     ! Substantive
++Advl      ! Adverbial
 
-!! The nominals are inflected in the following Case and Number
- +Sg +Du +Pl
- +Ess +Nom +Gen +Acc +Ill +Loc +Com +Com/Sh
+! Number
++Sg        ! Singular
++Pl        ! Plural
 
-!! The possession is marked as such:
- +PxSg1 +PxSg2 +PxSg3 +PxDu1 +PxDu2 +PxDu3 +PxPl1 +PxPl2 +PxPl3
-!! The comparative forms are:
- +Comp +Superl
-!! Numerals are classified under:
- +Attr +Card
- +Ord 
-!! Verb moods are:
- +Ind +Prs +Prt +Pot +Cond +Imprt
-!! Verb personal forms are:
- +Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3
-!! Other verb forms are
- +Inf +Ger +ConNeg +ConNegII +Neg +ImprtII +PrsPrc +PrfPrc +Sup +VGen +VAbess
+! Possessives
++PxSg1     ! First person singular
++PxSg2     ! Second person singular
++PxSp3     ! Third person singular/plural
++PxPl1     ! First person plural
++PxPl2     ! Second person plural
++Px        ! General possessive          !# -нікі
 
-! Abbreviated words are classified with:
- +ABBR +ACR 
-!! Special symbols are classified with:
-+CLB +PUNCT +LEFT +RIGHT
-!! The verbs are syntactically split according to transitivity:
- +TV +IV
-!! Special multiword units are analysed with:
- +Multi
-!! Non-dictionary words can be recognised with:
- +Guess
+! Cases
++Nom       ! Nominative
++Gen       ! Genitive
++Gens      ! Short/clitic Genitive (used with nouns)
++Dat       ! Dative
++Acc       ! Accusative
++Abl       ! Ablative
++Loc       ! Locative
++Ins       ! Instrumental
 
-!! Question and Focus particles:
- +Qst +Foc
++Refl      ! Reflexive
 
+!! some additional ~cases
++Sim       ! Similative (<apprx> in kymorph)
+              !# DAй
+0+Abd       ! Abessive=Privative ! Лишительный
+              !# -сыз/-сез (not used after posessives and cases)
++Reas      ! Reason
 
-!! Semantics are classified with
- +Mal +Fem +Sur 
- +Plc 
- +Org
- +Obj
- +Ani
- +Hum
- +Plant
- +Group
- +Time 
- +Txt
- +Route
- +Measr 
- +Wthr
- +Build 
- +Edu
- +Veh
- +Clth
+! Levels of comparison of adjectives
++Comp      ! Comparative
++Sup       ! Superlative
 
+! Pronoun types
++Pers      ! Personal
++Recip     ! Reciprocal
+! Pronoun and determiner types
++Dem       ! Demonstrative
++Ind       ! Indefinite
++Itg       ! Interrogative
++Qnt       ! Quantifier
++Neg       ! Negative       !# еш нерсе
+              ! (NOTE: also used to denote negation in verbs, i.e for м{A})
++Ref       ! Reflexive
 
-!! Derivations are classified under the morphophonetic form of the suffix, the
-!! source and target part-of-speech.
- +V→N +V→V +V→A
- +Der/xxx
+! Numeral types
++Ord       ! Ordinal
++Coll      ! Collective
++Dist      ! Distributive
 
+! Verbal features
 
-!! Morphophonology
-!! ---------------
-!! To represent phonologic variations in word forms we use the following
-!! symbols in the lexicon files:
- {aä} {oö} {uü}
+!! Mood
++Imp       ! Imperative
++Opt       ! Optative/jussive
++Sug       ! Suggestion
 
-!! And following triggers to control variation
- {front} {back}
+!! Derivation
++Caus      ! Causative
++Pass      ! Passive
++Coop      ! Cooperative
 
-!! !!Flag diacritics
-!! We have manually optimised the structure of our lexicon using following
-!! flag diacritics to restrict morhpological combinatorics - only allow compounds
-!! with verbs if the verb is further derived into a noun again:
- @P.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @D.NeedNoun.ON@    !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
- @C.NeedNoun@       !!≈ | @CODE@ | (Dis)allow compounds with verbs unless nominalised
-!! 
-!! For languages that allow compounding, the following flag diacritics are needed
-!! to control position-based compounding restrictions for nominals. Their use is
-!! handled automatically if combined with +CmpN/xxx tags. If not used, they will
-!! do no harm.
- @P.CmpFrst.FALSE@ !!≈ | @CODE@ | Require that words tagged as such only appear first
- @D.CmpPref.TRUE@  !!≈ | @CODE@ | Block such words from entering ENDLEX
- @P.CmpPref.FALSE@ !!≈ | @CODE@ | Block these words from making further compounds
- @D.CmpLast.TRUE@  !!≈ | @CODE@ | Block such words from entering R
- @D.CmpNone.TRUE@  !!≈ | @CODE@ | Combines with the next tag to prohibit compounding
- @U.CmpNone.FALSE@ !!≈ | @CODE@ | Combines with the prev tag to prohibit compounding
- @P.CmpOnly.TRUE@  !!≈ | @CODE@ | Sets a flag to indicate that the word has passed R
- @D.CmpOnly.FALSE@ !!≈ | @CODE@ | Disallow words coming directly from root.
-!! 
-!! Use the following flag diacritics to control downcasing of derived proper
-!! nouns (e.g. Finnish Pariisi -> pariisilainen). See e.g. North Sámi for how to use
-!! these flags. There exists a ready-made regex that will do the actual down-casing
-!! given the proper use of these flags.
- @U.Cap.Obl@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
- @U.Cap.Opt@        !!≈ | @CODE@ | Allowing downcasing of derived names: deatnulasj.
+!! Tense / finite forms
++Pres      ! for "жатыр", "тұр", "отыр" and "жүр"
++Aori       ! -{E}                    ! non-past (afaik /IS/)
++Pst      ! -{G}{A}н                ! past
++Ifi       ! -{D}{I}                 ! eyewitness past
++Hab       ! habitual
++Ifi_Evid  ! -{I}пт{I}               ! "reported past" (afaik /IS/)
++Fut       ! -{I}р                   ! future
++Fut_plan  ! -{M}{A}{K}              ! future plan
+
++Evi      ! evidential
+              ! Was used for -ган екен and -ыпты. The former is not handled here
+              ! in lexc anymore, the latter was renamed from <ifi><evid> to
+              ! <ifi_evid>
+
+!! Non-Finite verb forms
++Gna       ! generic verbal adverb
++Gna_Prf   ! perfective verbal adverb
++Gna_imp   ! imperfective verbal adverb
++Cna_Cnd   ! conditional verbal adverb
++Gna      ! "until" verbal adverb
++Ger       ! future gerund
++Ger_Imp   ! imperfective gerund
++Ger   ! perfective gerund
+
+!!! Participles
+
+!! Transitivity
++TV        ! Transitive
++IV        ! Intransitive
++TD        ! Temporary tag
+
+! Person
++p1        ! First person
++p2        ! Second person
++p3        ! Third person
++Frm       ! Formality
+
+! Modal particles
++Qst       ! Modal question particle
++Mod_Foc   ! "Particles of politeness and ardent desire"
+              ! (as in [N. Poppe. Tatar Manual]) or
+              ! "what about ..." question particles" :)
+              ! (as in kir.lexc)
++Mod_Dss   ! Assertive modal particle
++Mod       ! Modal verbs (шығар, сияқты etc)
+
+! Punctuation
++Sent      ! Sentence marker
++Guio      ! Hyphen
++Cm        ! Comma
++Apost      ! Apostrophe
++Rquot     ! Quote marker (right hand side)
++Lquot     ! Quote marker (left hand side)
++Rpar      ! Parenthetical marker (right hand side)
++Lpar      ! Parenthetical marker (left hand side)
+
+%{г%}
+%{й%}
+%{а%}
+%{А%}
+%{А1%}
+%{А2%}
+%{I%}
+%{ь%}
+%{В%}
+%{Т%}
+%{У%}
+%{Д%}
+%{н%}
+%{Н%}
+%{ң%}         ! for nouns ending in н that's /ŋ/ and not /n/→[ŋ]
+%{ъ%}         ! blocks voicing assimilation, mostly of Д for "irregular" locatives and Ж irregular verbal adverbs
+%{Ж%}
+
+%>            ! Morpheme boundary
+%             ! Space
+%-            !
+%,            !
+%.            !
+%%            !
+%+            ! clitic space
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!                       M O R P H O T A C T I C S                         !!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 LEXICON Root
-!! The word forms in UNDEFINED language start from the lexeme roots of basic
-!! word classes, or optionally from prefixes:
-0   Nouns       ;
-0   Verbs       ;
-0   Adjectives  ;
-0   Pronouns    ;
-0   Numerals    ;
-0   Prefixes    ;
 
-! vim: set ft=xfst-lexc:
+Nouns ;
+Verbs ;
+Pronouns ;
+Conjunctions ;
+Adverbs ;
+Adjectives ;
+Postpositions ;
+Postadverbs ;
+Determiners ;
+Numbers ;
+Particles ;     ! UGH
+ProperNouns ;
+Punctuation ;
+
+

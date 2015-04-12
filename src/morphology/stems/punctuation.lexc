@@ -1,0 +1,30 @@
+
+
+
+ LEXICON Punctuation
+!===================!
+
+
+%.+Sent:%. # ;
+%.%.+Sent:%.%. # ;
+%.%.%.+Sent:%.%.%. # ;
+%;+Sent:%; # ;
+%:+Sent:%: # ;
+%!+Sent:%! # ;
+%-+Guio:%- # ;
+%—+Guio:%— # ;
+,+Cm:, # ;
+%?+Sent:%? # ;
+%'+Apost:%' # ;
+%"+Sent:%" # ;
+%«+Lquot:%« # ;
+%»+Rquot:%» # ;
+%”+Rquot:%” # ;
+%“+Lquot:%“ # ;
+%(+Lpar:%( # ;
+%]+Rpar:%] # ;
+%[+Lpar:%[ # ;
+%)+Rpar:%) # ;
+%\+Sent:%\ # ;
+%/+Sent:%/ # ;
+

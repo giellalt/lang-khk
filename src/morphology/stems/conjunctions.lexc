@@ -1,0 +1,25 @@
+
+
+LEXICON Conjunctions
+
+бөгөөд:бөгөөд ConjCoo ; ! "along with" ?
+ба:ба ConjCoo ; ! "and"
+бас:бас ConjCoo ; ! "and"
+харин:харин ConjCoo ; ! ~"but"
+эсвэл:эсвэл ConjCoo ; ! "if"
+болон:болон ConjCoo ;
+гэвч:гэвч ConjCoo ; ! "but"
+буюу:буюу ConjCoo ;
+хэрвээ:хэрвээ ConjCoo ; ! ~"if"
+хэрэв:хэрэв ConjCoo ; ! ~"if"
+болгон:болгон ConjCoo ; ! emphasiser?
+боловч:боловч ConjCoo ; ! "although"
+тул:тул ConjCoo ; ! "seeing that, insomuchas"
+
+
+
+
+LEXICON ConjCoo
++CC: # ;
+
+

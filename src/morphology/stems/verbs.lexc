@@ -1,8 +1,52 @@
-!! Verbs
-!! -----
-!! Verbs in UNDEFINED language are actions.
-
 LEXICON Verbs
-verb    Persons   ;
 
-! vim: set ft=xfst-lexc:
+бол Vinfl-IV ; ! "be"
+бай Vinfl-IV ; ! "be"
+үз Vinfl-TV ; ! "see"
+хар:хар%{ъ%} Vinfl-TV ; ! "look at"
+гэ Vinfl-IV ; ! "say" / quotative marker
+ав Vinfl-TV ; ! "take"
+ир:ир%{ъ%} Vinfl-IV ; ! "come"
+яв:яв%{ъ%} Vinfl-IV ; ! "go"
+оч:оч Vinfl-IV ; ! "go"
+өг Vinfl-TV ; ! "give"
+тэг Vinfl-IV ; ! "do such"
+ингэ Vinfl-IV ; ! "do thus"
+барь:барь Vinfl-TV ; ! "grab"
+сонс Vinfl-IV ; ! "listen"  FIXME: IV/TV?
+бос Vinfl-IV ; ! "stand"
+чад Vinfl-IV ; ! "be able to" FIXME: IV/TV?
+ярь:ярь Vinfl-IV ; ! "speak"
+гар:гар Vinfl-IV ; ! "leave"
+ол Vinfl-TV ; ! "find"
+хай Vinfl-TV ; ! "look for"
+март Vinfl-TV ; ! "forget"
+тавь:тавь Vinfl-TV ; ! "put"
+хий Vinfl-TV ; ! "do/make/put in"
+хэл Vinfl-IV ; ! "say"
+хүр:хүр Vinfl-TV ; ! "reach"
+амьдар Vinfl-IV ; ! "live"
+ажилл Vinfl-IV ; ! "work"
+эхэл Vinfl-IV ; ! "begin"
+дуус Vinfl-IV ; ! "finish"
+гар:гар Vinfl-IV ; ! "leave"
+ор:ор%{ъ%} Vinfl-IV ; ! "go/come in, enter"
+зар:зар%{ъ%} Vinfl-TV; ! "announce for sale" ??
+зориул:зориул Vinfl-TV ; ! "dedicate"
+үйлд:үйлд Vinfl-TV ; ! "create"
+ид:ид Vinfl-TV ; ! "eat"
+сан:сан Vinfl-TV ; ! "miss"
+боль:боль Vinfl-TV ; ! "stop, halt, bring to an end"
+шинж:шинж Vinfl-TV ; ! "investigate" ?
+зас:зас Vinfl-TV ; ! "fix"
+холб:холб Vinfl-IV ; ! "tie, connect" - takes comm objects
+сонго:сонго Vinfl-TV ; ! "choose"
+ойлго:ойлго Vinfl-TV ; ! "understand"
+бүтээ:бүтээ Vinfl-TV ; ! "create"  ! Use/MT
+уу:уу Vinfl-TV ; ! "drink"
+мэд:мэд Vinfl-TV ; ! "know"
+хэмээ:хэмээ Vinfl-TV ; ! "say (literary)"
+суу:суу Vinfl-IV ; ! "sit"
+оролц:оролц Vinfl-IV ; ! "catch up, step in"
+тогл:тогл Vinfl-IV ; ! "play"
+бий% бол:бий% бол Vinfl-IV ; ! "come into being"

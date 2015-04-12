@@ -1,15 +1,98 @@
-!! Noun inflection
-!! ---------------
-!! The UNDEFINED language nouns inflect in cases.
 
-LEXICON Cases
-+N+sg+nom:0     #   ;
-+N+pl+nom:i     #   ;
-+N+sg+loc:as    #   ;
-+N+pl+loc:ias   #   ;
-+N+sg+acc:at    #   ;
-+N+pl+acc:iat   #   ;
-#:0   Nouns   ;
+LEXICON Cases-Normal
 
-! vim: set ft=xfst-lexc:
++Nom: Clit ;
++Acc:%>%{I%}%{й%}г Clit ;
 
++Nom+Refl:%>%{г%}%{А1%}%{А2%} Clit ;  ! this is both nom and acc
+
++Gen:%>%{г%}%{I%}%{й%}н Clit ;
++Gen+Refl:%>%{г%}%{I%}%{й%}нх%>%{А1%}%{А2%} Clit ;
+
++Abl:%>%{г%}%{А1%}%{А2%}с Clit ;
++Abl+Refl:%>%{г%}%{А1%}%{А2%}с%{А1%}%{А2%} Clit ;
+
++Ins:%>%{г%}%{А1%}%{А2%}р Clit ;
++Ins+Refl:%>%{г%}%{А1%}%{А2%}р%>%{А1%}%{А2%} Clit ;
+
++Dat:%>%{а%}%{Д%} Clit ;               ! (with exceptional forms in т)
++Dat+Refl:%>д%{А1%}%{А2%} Clit ;  ! (with exceptional forms in т)
+
++Dat+Attr:% д%{А%}х%{ь%} Clit ;
+
++Gens:%>%{а%}н # ;
+
+
+LEXICON Cases-ExtraN
+
++Nom: Clit ;
++Acc:%>%{I%}%{й%}г Clit ;
+
++Refl:%>%{г%}%{А1%}%{А2%} Clit ;  ! this is both nom and acc
+
++Gen:%>%{Н%}%{I%}%{й%} Clit ;
++Gen+Refl:%>%{Н%}%{I%}%{й%}нх%>%{А1%}%{А2%} Clit ;
+
++Abl:%>%{Н%}%{А1%}%{А2%}с Clit ;
++Abl+Refl:%>%{Н%}%{А1%}%{А2%}с%>%{А1%}%{А2%} Clit ;
+
++Ins:%>%{Н%}%{А1%}%{А2%}р Clit ;
++Ins+Refl:%>%{Н%}%{А1%}%{А2%}р%>%{А1%}%{А2%} Clit ;
+
++Dat:%>%{а%}%{Н%}д Clit ;               ! (with exceptional forms in т)
++Dat+Refl:%>%{Н%}д%{А1%}%{А2%} Clit ;  ! (with exceptional forms in т)
+
++Dat+Attr:% д%{А%}х%{ь%} Clit ;
+
++Gens:%>%{а%}н # ;
+
+LEXICON PrnInfl
+
++Pron: Cases-Normal ;
+
+LEXICON DetInfl
+
++Det: # ;
+
+LEXICON Ninfl
+
++N: Cases-Normal ;
++N+Pl:%>%{н%}%{У%}%{У%}д Cases-Normal ;  ! (with exceptional forms)
+
+LEXICON Ninfl-Person
+
++N: Cases-Normal ;
++N+Pl:%>% нар Cases-Normal ;
+
+LEXICON Ninfl-NoPl
+
++N: Cases-Normal ;
+
+LEXICON Ninfl-Pl
+
++N+Pl: Cases-Normal ;
+
+
+LEXICON Ninfl-ExtraN
+
++N: Cases-ExtraN ;
++N+Pl:%>н%{У%}%{У%}д Cases-Normal ;  ! (with exceptional forms)
+
+LEXICON Ninfl-ExtraN-NoPl
+
++N: Cases-ExtraN ;
+
+LEXICON NP-COG-M
+
++N+Prop+Cog+Msc: Cases-Normal ;
+
+LEXICON NP-ORG
+
++N+Prop+Org: Cases-Normal ; 
++N+Prop+Org+Attr: # ; 
+
+
+LEXICON NP-TOP
+
++N+Prop+Top: Cases-Normal ; 
++N+Prop+Top+Attr: # ; 

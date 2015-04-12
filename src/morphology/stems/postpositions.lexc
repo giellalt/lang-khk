@@ -1,0 +1,22 @@
+
+LEXICON Postpositions
+
+бол:бол Postp ;        ! topicaliser
+шиг:шиг Postp ;        ! "like"
+бүр:бүр Postp ;        ! "each"
+өмнө:өмнө Postp ;      ! "before, until" ! FIXME: takes attr
+дараа:дараа Postp ;    ! "after"         ! FIXME: takes attr
+гэвэл:гэвэл Postp ;    ! CHECK
+дээр:дээр Postp ;      ! "on (top of)"   ! FIXME: takes attr
+дотор:дотор Postp ;    ! "in(side of)"   ! FIXME: takes attr
+доор:доор Postp ;      ! "under"         ! FIXME: takes attr
+тухай:тухай Postp ;    ! "about"
+гадна:гадна Postp ;    ! "outside"
+төлөө:төлөө Postp ;    !
+тулд:тулд Postp ;      ! 
+хүртэл:хүртэл Postp ;  ! "until"
+хойш:хойш Postp ;      ! "since"
+хувьд:хувьд Postp ;    ! "regarding"
+
+LEXICON Postp
++Po: # ;

@@ -1,0 +1,18 @@
+LEXICON Clit-Qst
++вэ+Qst:% %{В%}э # ;         ! wh-question
++уу+Qst:% %{У%}%{У%} # ;     ! yes/no-question
+
+LEXICON Clit-NonQst
+
++даа+Qst:% д%{А1%}%{А2%} # ;   !
++аа+Qst:% %{А1%}%{А2%} # ;     !
++билээ+Qst:% билээ # ;       ! assumed previously known information (?)
+
+
+LEXICON Clit
+! Sentence-final clitics
+
+# ;
+Clit-Qst ;
+Clit-NonQst ;
+

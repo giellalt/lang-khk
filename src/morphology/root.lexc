@@ -9,19 +9,17 @@ Multichar_Symbols
 
 ! Part of speech categories
 +N         ! Noun                       ! Зат есім
-+N+Prop        ! Proper noun
++N +Prop        ! Proper noun
 +A       ! Adjective                  ! Сын есім
 +Num       ! Numeral                    ! Сан есім
 +Pron       ! Pronoun
 +Det       ! Determiner
 +V         ! Verb
-+V+Aux      ! Auxilary verb
++Aux      ! Auxilary verb
 +Adv       ! Adverb                     ! Үстеу            ! Наречие
 +Post      ! Postposition               ! Септеулік шылау
-+Post+Adv   ! Postadverb                 ! "Артүстеу"
 +CC    ! Co-ordinating conjunction  ! жалғаулық шылау
 +CS    ! Sub-ordinating conjunction ! жалғаулық шылау
-+CC+Adv    ! Adverbial conjunction      ! жалғаулық шылау
 +Par      ! Particle
 +Interj        ! Interjection               ! Одағай
 +Abbr      ! Abbreviation

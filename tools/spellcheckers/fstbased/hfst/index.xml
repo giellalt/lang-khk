@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <hfstspeller dtdversion="1.0" hfstversion="3">
   <info>
-    <locale>af</locale>
+    <locale>khk</locale>
     <title>Giellatekno/Divvun/UiT fst-based speller for Halh Mongolian</title>
     <description>This is an fst-based speller for Halh Mongolian. It is based
     on the normative subset of the morphological analyser for Halh Mongolian.

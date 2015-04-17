@@ -11,8 +11,7 @@ LEXICON Clit-NonQst
 
 LEXICON Clit
 ! Sentence-final clitics
-
 # ;
-Clit-Qst ;
-Clit-NonQst ;
+!Clit-Qst ;
+!Clit-NonQst ;
 

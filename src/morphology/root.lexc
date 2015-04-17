@@ -65,6 +65,10 @@ Multichar_Symbols
 +Abl       ! Ablative
 +Loc       ! Locative
 +Ins       ! Instrumental
++Com       ! Commutative
++Dir       ! Directional
+
++DH        ! Хамаатуулах утгат бүтээвэр
 
 +Refl      ! Reflexive
 
@@ -175,6 +179,13 @@ Multichar_Symbols
 %{ь%}
 %{В%}
 %{Т%}
+%{Д%}
+
+%{Ы%}
+%{Ү%}
+
+%{Б%} %{Э%} %{И%} %{Ө%} %{У%} %{Ч%} %{Х%} %{Й%} %{Ж%} %{Е%} %{Н%} %{Г%} 
+
 %{У%}
 %{Д%}
 %{н%}

@@ -2,97 +2,78 @@
 LEXICON Cases-Normal
 
 +Nom: Clit ;
-+Acc:%>%{I%}%{й%}г Clit ;
++Acc:%>%{Ы%}%{Ы%}г Clit ;
 
-+Nom+Refl:%>%{г%}%{А1%}%{А2%} Clit ;  ! this is both nom and acc
++Nom+Refl:%>%{Ү%}%{Ү%} Clit ;  ! this is both nom and acc
 
-+Gen:%>%{г%}%{I%}%{й%}н Clit ;
-+Gen+Refl:%>%{г%}%{I%}%{й%}нх%>%{А1%}%{А2%} Clit ;
++Gen:%>%{Ы%}%{Ы%}н Clit ;
 
-+Abl:%>%{г%}%{А1%}%{А2%}с Clit ;
-+Abl+Refl:%>%{г%}%{А1%}%{А2%}с%{А1%}%{А2%} Clit ;
++Abl:%>%{Ү%}%{Ү%}с Clit ;
++Ins:%>%{Ү%}%{Ү%}р Clit ;
 
-+Ins:%>%{г%}%{А1%}%{А2%}р Clit ;
-+Ins+Refl:%>%{г%}%{А1%}%{А2%}р%>%{А1%}%{А2%} Clit ;
++Dat:%>%{Д%} Clit ;               ! (with exceptional forms in т)
 
-+Dat:%>%{а%}%{Д%} Clit ;               ! (with exceptional forms in т)
-+Dat+Refl:%>д%{А1%}%{А2%} Clit ;  ! (with exceptional forms in т)
-
-+Dat+Attr:% д%{А%}х%{ь%} Clit ;
-
-+Gens:%>%{а%}н # ;
-
-
-LEXICON Cases-ExtraN
-
-+Nom: Clit ;
-+Acc:%>%{I%}%{й%}г Clit ;
-
-+Refl:%>%{г%}%{А1%}%{А2%} Clit ;  ! this is both nom and acc
-
-+Gen:%>%{Н%}%{I%}%{й%} Clit ;
-+Gen+Refl:%>%{Н%}%{I%}%{й%}нх%>%{А1%}%{А2%} Clit ;
-
-+Abl:%>%{Н%}%{А1%}%{А2%}с Clit ;
-+Abl+Refl:%>%{Н%}%{А1%}%{А2%}с%>%{А1%}%{А2%} Clit ;
-
-+Ins:%>%{Н%}%{А1%}%{А2%}р Clit ;
-+Ins+Refl:%>%{Н%}%{А1%}%{А2%}р%>%{А1%}%{А2%} Clit ;
-
-+Dat:%>%{а%}%{Н%}д Clit ;               ! (with exceptional forms in т)
-+Dat+Refl:%>%{Н%}д%{А1%}%{А2%} Clit ;  ! (with exceptional forms in т)
-
-+Dat+Attr:% д%{А%}х%{ь%} Clit ;
-
-+Gens:%>%{а%}н # ;
-
-LEXICON PrnInfl
-
-+Pron: Cases-Normal ;
-
-LEXICON DetInfl
-
-+Det: # ;
+!+Dat+Attr:% д%{Ү%}х%{ь%} Clit ;
 
 LEXICON Ninfl
 
 +N: Cases-Normal ;
-+N+Pl:%>%{н%}%{У%}%{У%}д Cases-Normal ;  ! (with exceptional forms)
-
-LEXICON Ninfl-Person
-
-+N: Cases-Normal ;
-+N+Pl:%>% нар Cases-Normal ;
-
-LEXICON Ninfl-NoPl
-
-+N: Cases-Normal ;
-
-LEXICON Ninfl-Pl
-
-+N+Pl: Cases-Normal ;
 
 
-LEXICON Ninfl-ExtraN
+LEXICON 1_1
+	+N: NUM_1_1 ;
+	+N+Sg: Case_1_1 ;
 
-+N: Cases-ExtraN ;
-+N+Pl:%>н%{У%}%{У%}д Cases-Normal ;  ! (with exceptional forms)
-
-LEXICON Ninfl-ExtraN-NoPl
-
-+N: Cases-ExtraN ;
-
-LEXICON NP-COG-M
-
-+N+Prop+Cog+Msc: Cases-Normal ;
-
-LEXICON NP-ORG
-
-+N+Prop+Org: Cases-Normal ; 
-+N+Prop+Org+Attr: # ; 
+LEXICON 1_25 
+	+N: NUM_1_1 ;
+	+N: Case_1_25 ;
 
 
-LEXICON NP-TOP
+LEXICON NUM_1_1
+	+Sg+Nom: Clit ;
+	+Pl:%>н%{У%}%{У%}д PL_UUD  ;
 
-+N+Prop+Top: Cases-Normal ; 
-+N+Prop+Top+Attr: # ; 
+
+LEXICON PL_UUD
+	+Gen:%>%{Ы%}%{Ы%}н CASE_GEN_IIN ;
+	+Nom: Clit ;
+
+LEXICON CASE_GEN_IIN
+	Clit ;
+	+DH:%>х POS_H ;
+
+LEXICON POS_H
+	Clit ;
+	+Acc:%>%{Ы%}%{Ы%}г CASE_ACC_IIG ;
+
+LEXICON CASE_ACC_IIG 
+	Clit ;
+	+Refl:%>%{Ү%}%{Ү%} Clit ;
+
+LEXICON Case_1_1
+	+Nom: Clit ;
+	+Gen:%>н%{Ы%}%{Ы%} Clit ;
+	+Acc:%>г Clit ;
+	+Dat:%>нд Clit ;              
+	+Abl:%>н%{Ү%}%{Ү%}с Clit ;
+	+Ins:%>г%{Ү%}%{Ү%}р Clit ;
+	+Com:%>т%{Ү%}й Clit ;
+	+Dir:%>% р%{У%}%{У%} Clit ;
+	+Dir:%>% л%{У%}%{У%} Clit ;
+
+	+Nom+Refl:%>г%{Ү%}%{Ү%} Clit ; 
+
+
+LEXICON Case_1_25
+	+Nom: Clit ;
+	+Gen:%>н%{Ы%}%{Ы%} Clit ;
+	+Acc:%>%{Ы%}%{Ы%}г Clit ;
+	+Dat:%>%{Ү%}%нд Clit ;              
+	+Abl:%>н%{Ү%}%{Ү%}с Clit ;
+	+Ins:%>%{Ү%}%{Ү%}р Clit ;
+	+Com:%>т%{Ү%}й Clit ;
+	+Dir:%>% р%{У%}%{У%} Clit ;
+	+Dir:%>% л%{У%}%{У%} Clit ;
+
+	+Nom+Refl:%>%{Ү%}%{Ү%} Clit ; 
+

@@ -73,7 +73,7 @@ LEXICON Nouns
 утас Ninfl ; ! "phone"
 зураг Ninfl ; ! "picture"
 гахай Ninfl-ExtraN ; ! "pig"
-табаг Ninfl ; ! "plate"
+таваг:тав%{а%}г Ninfl ; ! "plate"
 аймаг:айм%{а%}г Ninfl ; ! "aimag (province)"
 асуулт Ninfl ; ! "question"
 цув Ninfl ; ! "coat"
@@ -230,4 +230,12 @@ LEXICON Nouns
 тогтоц:тогтоц Ninfl ; ! "formation"
 овоорго:овоорго Ninfl ; ! "accumulation"
 
+бороо:бороо 1_1 ;
+араа:араа 1_1 ;
+бөглөө:бөглөө 1_1 ;
+гэрчилгээ:гэрчилгээ 1_1 ;
 
+судас:суд%{а%}с 1_25 ;
+гэдэс:гэд%{а%}с 1_25 ;
+холтос:холт%{а%}с 1_25 ;
+гөлөм:гөл%{а%}м 1_25 ;

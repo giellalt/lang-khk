@@ -1,5 +1,4 @@
 Alphabet
-
 ! The alphabet should contain all symbols which are used in the grammar.
 ! Symbols consist of strings of utf-8 characters. Reserved words and white-space
 ! need to be quoted using %.

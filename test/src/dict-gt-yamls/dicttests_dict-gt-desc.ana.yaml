@@ -2,6 +2,7 @@ Config:
   hfst:
     Gen:   ../../src/generator-dict-gt-norm.hfst
     Morph: ../../src/analyser-dict-gt-desc.hfst
+    App: hfst-lookup
   xerox:
     Gen:   ../../src/generator-dict-gt-norm.xfst
     Morph: ../../src/analyser-dict-gt-desc.xfst

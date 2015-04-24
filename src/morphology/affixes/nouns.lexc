@@ -57,7 +57,7 @@ LEXICON Case_1_1
 	+Dat:%>нд Clit ;              
 	+Abl:%>н%{Ү%}%{Ү%}с Clit ;
 	+Ins:%>г%{Ү%}%{Ү%}р Clit ;
-	+Com:%>т%{Ү%}й Clit ;
+	+Com:%>т%{Й%}й Clit ;
 	+Dir:%>% р%{У%}%{У%} Clit ;
 	+Dir:%>% л%{У%}%{У%} Clit ;
 
@@ -71,7 +71,7 @@ LEXICON Case_1_25
 	+Dat:%>%{Ү%}%нд Clit ;              
 	+Abl:%>н%{Ү%}%{Ү%}с Clit ;
 	+Ins:%>%{Ү%}%{Ү%}р Clit ;
-	+Com:%>т%{Ү%}й Clit ;
+	+Com:%>т%{Й%}й Clit ;
 	+Dir:%>% р%{У%}%{У%} Clit ;
 	+Dir:%>% л%{У%}%{У%} Clit ;
 

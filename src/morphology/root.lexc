@@ -24,6 +24,7 @@ Multichar_Symbols
 +Interj        ! Interjection               ! Одағай
 +Abbr      ! Abbreviation
 +Cop       ! Copula
++Symbol !!≈ * @CODE@ = independent symbols in the text stream, like £, €, ©
 
 ! Proper noun types
 +Top       ! Toponym

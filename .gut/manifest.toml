@@ -1,0 +1,35 @@
+[package]
+name = "khk"
+human_name = "Halh Mongolian"
+version = "0.1.0"
+
+# Table of speller tag -> filename to include in the bundle
+# filenames depends on specific project
+[spellers.khk]
+filename = "khk-mobile.zhfst"
+
+# Table of bundles to generated
+# key is the type of bundle
+# Windows speller bundle require a uuid for the installer
+[bundles.speller_win]
+package = "speller-khk"
+platform = "windows"
+uuid = "27AEFA51-FC27-4B5F-B060-0BF96A6BA48A"
+repo = "https://pahkat.uit.no/main/"
+
+[bundles.speller_macos]
+pkg_id = "no.divvun.MacDivvun.khk"
+package = "speller-khk"
+platform = "macos"
+repo = "https://pahkat.uit.no/main/"
+
+[bundles.speller_win_mso]
+package = "speller-khk-mso"
+platform = "windows"
+uuid = "4C40666E-B53A-4197-8750-E34197B49748"
+repo = "https://pahkat.uit.no/main/"
+
+[bundles.speller_mobile]
+package = "speller-khk"
+platform = "mobile"
+repo = "https://pahkat.uit.no/main/"

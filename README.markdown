@@ -21,7 +21,7 @@ Documentation
 
 Documentation can be found at:
 
--   <https://giellalt.uit.no/lang/khkdoc/index.html>
+-   <https://giellalt.uit.no/lang/khk/KhalkhaMongolianDocumentation.html>
 -   <https://giellalt.uit.no/index.html>
 
 Core dependencies

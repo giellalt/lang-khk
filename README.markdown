@@ -1,6 +1,10 @@
 The Halh (Khalkha) Mongolian morphology and tools
 ==========================================
 
+[![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/issues)
+[![Build Status](https://github.com/giellalt/lang-khk/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-khk/actions)
+[![License](https://img.shields.io/github/license/giellalt/lang-khk)](https://raw.githubusercontent.com/giellalt/lang-khk/develop/LICENSE)
+
 This repository contains finite state source files for the Halh Mongolian language,
 for building morphological analysers, proofing tools
 and dictionaries. The data and implementation are licenced under __LICENCE__
@@ -8,10 +12,6 @@ licence, also detailed in the
 [LICENCE](https://github.com/giellalt/lang-khk/blob/develop/LICENCE). The
 authors named in the AUTHORS file are available to grant other licencing
 choices.
-
-[![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/issues)
-[![Build Status](https://github.com/giellalt/lang-khk/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-khk/actions)
-[![License](https://img.shields.io/github/license/giellalt/lang-khk)](https://raw.githubusercontent.com/giellalt/lang-khk/develop/LICENSE)
 
 Install proofing tools and [keyboards](https://github.com/giellalt/keyboard-khk)
 for the Halh Mongolian language by using the [Divvun Installer](http://divvun.no)

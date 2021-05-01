@@ -1,2 +1,8 @@
+* [propernouns-affixes.md](propernouns-affixes.md)
+* [symbols-affixes.md](symbols-affixes.md)
+* [adjectives-affixes.md](adjectives-affixes.md)
 * [root-morphology.md](root-morphology.md)
+* [propernouns-stems.md](propernouns-stems.md)
+* [prefixes-stems.md](prefixes-stems.md)
+* [transcriptor-numbers-digit2text.md](transcriptor-numbers-digit2text.md)
 * [transcriptor-abbrevs2text.md](transcriptor-abbrevs2text.md)

@@ -1,3 +1,21 @@
+Proper noun inflection
+The Halh Mongolian language proper nouns inflect in the same cases as regular
+nouns, but with a colon (':') as separator.
+
+
+
+
+# Symbol affixes
+
+
+
+
+
+Adjective inflection
+The Halh Mongolian language adjectives compare.
+
+
+
 M O R P H O L O G I C A L · T R A N S D U C E R · F O R · K H A L K H A  !!
 
 
@@ -40,6 +58,74 @@ Transitivity
 
 
 
+
+
+
+
+
+
+
+
+
+
+Prefixes
+Prefixes in the Halh Mongolian language are bound to beginning of other words.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% komma% :,      Root ;
+% tjuohkkis% :%. Root ;
+% kolon% :%:     Root ;
+% sárggis% :%-   Root ; 
+% násti% :%*     Root ; 
 
 
 

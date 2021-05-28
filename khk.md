@@ -605,6 +605,24 @@ These were the set types.
 
 
 
+Proper noun inflection
+The Halh Mongolian language proper nouns inflect in the same cases as regular
+nouns, but with a colon (':') as separator.
+
+
+
+Adjective inflection
+The Halh Mongolian language adjectives compare.
+
+
+
+
+# Symbol affixes
+
+
+
+
+
 
 
 
@@ -616,24 +634,6 @@ These were the set types.
 
 Prefixes
 Prefixes in the Halh Mongolian language are bound to beginning of other words.
-
-
-
-
-# Symbol affixes
-
-
-
-
-
-Proper noun inflection
-The Halh Mongolian language proper nouns inflect in the same cases as regular
-nouns, but with a colon (':') as separator.
-
-
-
-Adjective inflection
-The Halh Mongolian language adjectives compare.
 
 
 
@@ -678,22 +678,6 @@ Transitivity
 
 
 
-
-
-
-
-
-We describe here how abbreviations are in Halh Mongolian are read out, e.g.
-for text-to-speech systems.
-
-For example:
-
- * s.:syntynyt # ;  
- * os.:omaa% sukua # ;  
- * v.:vuosi # ;  
- * v.:vuonna # ;  
- * esim.:esimerkki # ; 
- * esim.:esimerkiksi # ; 
 
 
 
@@ -749,6 +733,22 @@ For example:
 % kolon% :%:     Root ;
 % sárggis% :%-   Root ; 
 % násti% :%*     Root ; 
+
+
+
+
+We describe here how abbreviations are in Halh Mongolian are read out, e.g.
+for text-to-speech systems.
+
+For example:
+
+ * s.:syntynyt # ;  
+ * os.:omaa% sukua # ;  
+ * v.:vuosi # ;  
+ * v.:vuonna # ;  
+ * esim.:esimerkki # ; 
+ * esim.:esimerkiksi # ; 
+
 
 
       [ L A N G U A G E ]  G R A M M A R   C H E C K E R

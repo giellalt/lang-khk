@@ -1,4 +1,4 @@
-M O R P H O L O G I C A L · T R A N S D U C E R · F O R · K H A L K H A  !!
+
 
 
 
@@ -41,3 +41,5 @@ Transitivity
 
 
 
+* * *
+<small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/root.lexc)</small>

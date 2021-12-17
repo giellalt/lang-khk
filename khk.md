@@ -606,28 +606,7 @@ These were the set types.
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-khk/blob/main/../src/cg3/functions.cg3)</small>Proper noun inflection
-The Halh Mongolian language proper nouns inflect in the same cases as regular
-nouns, but with a colon (':') as separator.
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/propernouns.lexc)</small>
-# Symbol affixes
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/symbols.lexc)</small>Adjective inflection
-The Halh Mongolian language adjectives compare.
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/adjectives.lexc)</small>Prefixes
+<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-khk/blob/main/../src/cg3/functions.cg3)</small>Prefixes
 Prefixes in the Halh Mongolian language are bound to beginning of other words.
 
 
@@ -688,6 +667,27 @@ Transitivity
 
 * * *
 <small>This (part of) documentation was generated from [../src/fst/root.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/root.lexc)</small>
+# Symbol affixes
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/symbols.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/symbols.lexc)</small>Adjective inflection
+The Halh Mongolian language adjectives compare.
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/adjectives.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/adjectives.lexc)</small>Proper noun inflection
+The Halh Mongolian language proper nouns inflect in the same cases as regular
+nouns, but with a colon (':') as separator.
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/propernouns.lexc)</small>
 
 
 We describe here how abbreviations are in Halh Mongolian are read out, e.g.

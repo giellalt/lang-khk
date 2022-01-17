@@ -606,27 +606,11 @@ These were the set types.
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-khk/blob/main/../src/cg3/functions.cg3)</small>Prefixes
-Prefixes in the Halh Mongolian language are bound to beginning of other words.
+<small>This (part of) documentation was generated from [../src/cg3/functions.cg3](http://github.com/giellalt/lang-khk/blob/main/../src/cg3/functions.cg3)</small>
 
 
 
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/prefixes.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/stems/prefixes.lexc)</small>
-
-
-
-
-
-
-
-
-* * *
-<small>This (part of) documentation was generated from [../src/fst/stems/propernouns.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/stems/propernouns.lexc)</small>
-
-
-
- * +Symbol = independent symbols in the text stream, like £, €, ©
+* +Symbol© = independent symbols in the text stream, like £, €, ©
 
 
 gender of anthroponyms and cognoms
@@ -687,7 +671,23 @@ nouns, but with a colon (':') as separator.
 
 
 * * *
-<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/propernouns.lexc)</small>
+<small>This (part of) documentation was generated from [../src/fst/affixes/propernouns.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/affixes/propernouns.lexc)</small>Prefixes
+Prefixes in the Halh Mongolian language are bound to beginning of other words.
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/prefixes.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/stems/prefixes.lexc)</small>
+
+
+
+
+
+
+
+
+* * *
+<small>This (part of) documentation was generated from [../src/fst/stems/propernouns.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/fst/stems/propernouns.lexc)</small>
 
 
 We describe here how abbreviations are in Halh Mongolian are read out, e.g.

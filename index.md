@@ -7,6 +7,8 @@
 
 This page documents the work on the **Halh Mongolian language model**. 
 
+Nothing has been done to the language model yet, it just contains dummy files.
+
 # Project documentation
 
 * (Add links to project specific documentation here as needed. Keep the documentation in the `docs/` directory.)

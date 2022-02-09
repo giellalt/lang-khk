@@ -1,13 +1,23 @@
-* [src-cg3-functions.cg3.md](src-cg3-functions.cg3.md)
-* [src-fst-stems-propernouns.lexc.md](src-fst-stems-propernouns.lexc.md)
-* [src-fst-stems-prefixes.lexc.md](src-fst-stems-prefixes.lexc.md)
-* [src-fst-affixes-propernouns.lexc.md](src-fst-affixes-propernouns.lexc.md)
-* [src-fst-affixes-adjectives.lexc.md](src-fst-affixes-adjectives.lexc.md)
-* [src-fst-affixes-symbols.lexc.md](src-fst-affixes-symbols.lexc.md)
-* [src-fst-root.lexc.md](src-fst-root.lexc.md)
-* [src-phonetics-txt2ipa.xfscript.md](src-phonetics-txt2ipa.xfscript.md)
-* [src-transcriptions-transcriptor-numbers-digit2text.lexc.md](src-transcriptions-transcriptor-numbers-digit2text.lexc.md)
-* [src-transcriptions-transcriptor-abbrevs2text.lexc.md](src-transcriptions-transcriptor-abbrevs2text.lexc.md)
-* [tools-grammarcheckers-grammarchecker.cg3.md](tools-grammarcheckers-grammarchecker.cg3.md)
-* [tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md](tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.md)
-* [tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md](tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.md)
+* `src/`
+    * `cg3/`
+        * [functions.cg3](src-cg3-functions.cg3.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/cg3/functions.cg3))
+    * `fst/`
+        * `stems/`
+            * [propernouns.lexc](src-fst-stems-propernouns.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/stems/propernouns.lexc))
+            * [prefixes.lexc](src-fst-stems-prefixes.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/stems/prefixes.lexc))
+        * `affixes/`
+            * [propernouns.lexc](src-fst-affixes-propernouns.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/affixes/propernouns.lexc))
+            * [adjectives.lexc](src-fst-affixes-adjectives.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/affixes/adjectives.lexc))
+            * [symbols.lexc](src-fst-affixes-symbols.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/affixes/symbols.lexc))
+        * [root.lexc](src-fst-root.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/root.lexc))
+    * `phonetics/`
+        * [txt2ipa.xfscript](src-phonetics-txt2ipa.xfscript.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/phonetics/txt2ipa.xfscript))
+    * `transcriptions/`
+        * [transcriptor-numbers-digit2text.lexc](src-transcriptions-transcriptor-numbers-digit2text.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc))
+        * [transcriptor-abbrevs2text.lexc](src-transcriptions-transcriptor-abbrevs2text.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc))
+* `tools/`
+    * `grammarcheckers/`
+        * [grammarchecker.cg3](tools-grammarcheckers-grammarchecker.cg3.html) ([src](https://github.com/giellalt/lang-khk/blob/main/tools/grammarcheckers/grammarchecker.cg3))
+    * `tokenisers/`
+        * [tokeniser-gramcheck-gt-desc.pmscript](tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-khk/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript))
+        * [tokeniser-disamb-gt-desc.pmscript](tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-khk/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript))

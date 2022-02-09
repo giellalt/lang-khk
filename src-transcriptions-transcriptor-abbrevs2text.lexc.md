@@ -1,6 +1,5 @@
 
 
-
 We describe here how abbreviations are in Halh Mongolian are read out, e.g.
 for text-to-speech systems.
 
@@ -13,6 +12,9 @@ For example:
 * esim.:esimerkki # ; 
 * esim.:esimerkiksi # ; 
 
-
 * * *
-<small>This (part of) documentation was generated from [../src/transcriptions/transcriptor-abbrevs2text.lexc](http://github.com/giellalt/lang-khk/blob/main/../src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-khk/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+
+---
+

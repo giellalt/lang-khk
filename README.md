@@ -2,7 +2,7 @@ The Halh (Khalkha) Mongolian morphology and tools
 ==========================================
 
 [![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/issues)
-[![Build Status](https://github.com/giellalt/lang-khk/workflows/Speller%20CI+CD/badge.svg)](https://github.com/giellalt/lang-khk/actions)
+[![Build Status](https://divvun-tc.thetc.se/api/github/v1/repository/giellalt/lang-khk/main/badge.svg)](https://github.com/giellalt/lang-khk/actions)
 [![License](https://img.shields.io/github/license/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/blob/main/LICENSE)
 
 This repository contains finite state source files for the Halh Mongolian language,

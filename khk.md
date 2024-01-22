@@ -175,7 +175,7 @@ The Halh Mongolian language adjectives compare.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/adjectives.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/affixes/adjectives.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/adjectives.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/affixes/adjectives.lexc)</small>
 
 ---
 
@@ -185,7 +185,7 @@ nouns, but with a colon (':') as separator.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/propernouns.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/affixes/propernouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/propernouns.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/affixes/propernouns.lexc)</small>
 
 ---
 
@@ -194,7 +194,7 @@ nouns, but with a colon (':') as separator.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/affixes/symbols.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/affixes/symbols.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/affixes/symbols.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/affixes/symbols.lexc)</small>
 
 ---
 
@@ -218,7 +218,7 @@ Transitivity
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/root.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/root.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/root.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/root.lexc)</small>
 
 ---
 
@@ -227,7 +227,7 @@ Prefixes in the Halh Mongolian language are bound to beginning of other words.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/prefixes.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/stems/prefixes.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/prefixes.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/stems/prefixes.lexc)</small>
 
 ---
 
@@ -235,7 +235,7 @@ Prefixes in the Halh Mongolian language are bound to beginning of other words.
 
 * * *
 
-<small>This (part of) documentation was generated from [src/fst/stems/propernouns.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/stems/propernouns.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/morphology/stems/propernouns.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/stems/propernouns.lexc)</small>
 
 ---
 
@@ -402,7 +402,7 @@ retracted tongue root			_q
 
 * * *
 
-<small>This (part of) documentation was generated from [src/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-khk/blob/main/src/phonetics/txt2ipa.xfscript)</small>
+<small>This (part of) documentation was generated from [src/fst/phonetics/txt2ipa.xfscript](https://github.com/giellalt/lang-khk/blob/main/src/fst/phonetics/txt2ipa.xfscript)</small>
 
 ---
 
@@ -422,7 +422,7 @@ For example:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-khk/blob/main/src/transcriptions/transcriptor-abbrevs2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-abbrevs2text.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/transcriptions/transcriptor-abbrevs2text.lexc)</small>
 
 ---
 
@@ -436,7 +436,7 @@ For example:
 
 * * *
 
-<small>This (part of) documentation was generated from [src/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-khk/blob/main/src/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
+<small>This (part of) documentation was generated from [src/fst/transcriptions/transcriptor-numbers-digit2text.lexc](https://github.com/giellalt/lang-khk/blob/main/src/fst/transcriptions/transcriptor-numbers-digit2text.lexc)</small>
 
 ---
 

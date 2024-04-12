@@ -4,8 +4,13 @@
     * `fst/`
         * `morphology/`
             * `affixes/`
+                * [adjectives.lexc](src-fst-morphology-affixes-adjectives.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/affixes/adjectives.lexc))
+                * [propernouns.lexc](src-fst-morphology-affixes-propernouns.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/affixes/propernouns.lexc))
+                * [symbols.lexc](src-fst-morphology-affixes-symbols.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/affixes/symbols.lexc))
             * [root.lexc](src-fst-morphology-root.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/root.lexc))
             * `stems/`
+                * [prefixes.lexc](src-fst-morphology-stems-prefixes.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/stems/prefixes.lexc))
+                * [propernouns.lexc](src-fst-morphology-stems-propernouns.lexc.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/morphology/stems/propernouns.lexc))
         * `phonetics/`
             * [txt2ipa.xfscript](src-fst-phonetics-txt2ipa.xfscript.html) ([src](https://github.com/giellalt/lang-khk/blob/main/src/fst/phonetics/txt2ipa.xfscript))
         * `transcriptions/`
@@ -14,7 +19,6 @@
 * `tools/`
     * `grammarcheckers/`
         * [grammarchecker.cg3](tools-grammarcheckers-grammarchecker.cg3.html) ([src](https://github.com/giellalt/lang-khk/blob/main/tools/grammarcheckers/grammarchecker.cg3))
-            * `/`
     * `tokenisers/`
         * [tokeniser-disamb-gt-desc.pmscript](tools-tokenisers-tokeniser-disamb-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-khk/blob/main/tools/tokenisers/tokeniser-disamb-gt-desc.pmscript))
         * [tokeniser-gramcheck-gt-desc.pmscript](tools-tokenisers-tokeniser-gramcheck-gt-desc.pmscript.html) ([src](https://github.com/giellalt/lang-khk/blob/main/tools/tokenisers/tokeniser-gramcheck-gt-desc.pmscript))

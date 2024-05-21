@@ -32,7 +32,7 @@ LEXICON 1_1
 
 LEXICON 1_25 
 	+N: NUM_1_1 ;
-	+N: Case_1_25 ;
+	+N+Sg: Case_1_25 ;
 
 
 LEXICON NUM_1_1
@@ -71,7 +71,7 @@ LEXICON Case_1_1
 
 
 LEXICON Case_1_25
-	+Nom: Clit ;
+!	+Nom: Clit ; ! NUM_1_1 instead
 	+Gen:%>н%{Ы%}%{Ы%} Clit ;
 	+Acc:%>%{Ы%}%{Ы%}г Clit ;
 	+Dat:%>%{Ү%}%нд Clit ;              

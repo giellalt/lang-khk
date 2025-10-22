@@ -4,7 +4,7 @@
 ![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-khk%2Fgh-pages%2Flemmacount.json)
 [![License](https://img.shields.io/github/license/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/blob/main/LICENSE)
 [![Issues](https://img.shields.io/github/issues/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/issues)
-[![Build Status](https://divvun-tc.giellalt.org/api/github/v1/repository/giellalt/lang-khk/main/badge.svg)](https://github.com/giellalt/lang-khk/actions)
+[![Build Status](https://builds.giellalt.org/api/badge/lang-khk?label=CI)](https://builds.giellalt.org/pipelines/lang-khk/builds/latest)
 
 This page documents the work on the **Halh Mongolian language model**. 
 

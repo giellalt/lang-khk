@@ -133,7 +133,6 @@ subdir = docs
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_check_gnu_make.m4 \
 	$(top_srcdir)/m4/ax_compare_version.m4 \
-	$(top_srcdir)/m4/ax_python_module.m4 \
 	$(top_srcdir)/m4/giella-config-files.m4 \
 	$(top_srcdir)/m4/giella-macros.m4 $(top_srcdir)/m4/hfst.m4 \
 	$(top_srcdir)/configure.ac
@@ -234,6 +233,7 @@ DIFFTOOL = @DIFFTOOL@
 DIVVUNSPELL = @DIVVUNSPELL@
 DIVVUN_ACCURACY = @DIVVUN_ACCURACY@
 DIVVUN_CHECKER = @DIVVUN_CHECKER@
+DIVVUN_RUNTIME = @DIVVUN_RUNTIME@
 DIVVUN_VALIDATE_SUGGEST = @DIVVUN_VALIDATE_SUGGEST@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
@@ -256,6 +256,8 @@ GTLANG = @GTLANG@
 GTLANG2 = @GTLANG2@
 GTLANGUAGE = @GTLANGUAGE@
 GTLEMMATEST = @GTLEMMATEST@
+GTMORPHTEST = @GTMORPHTEST@
+GTMULTICHARTEST = @GTMULTICHARTEST@
 GTPARADIGMTEST = @GTPARADIGMTEST@
 GTSPELLTEST = @GTSPELLTEST@
 GZIP = @GZIP@
@@ -328,6 +330,7 @@ PACKAGE_VERSION = @PACKAGE_VERSION@
 PATGEN = @PATGEN@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PERL = @PERL@
+PIPX = @PIPX@
 PKG_CONFIG = @PKG_CONFIG@
 PKG_CONFIG_LIBDIR = @PKG_CONFIG_LIBDIR@
 PKG_CONFIG_PATH = @PKG_CONFIG_PATH@
@@ -988,8 +991,8 @@ $(ALLINONE_MD_PAGE): $(VPATH_MDFILES)
 	$(AM_V_GEN)printf "# $(GLANGUAGE) language model documentation\n\nAll doc-comment documentation in one large file.\n" > $@
 	for f in $(VPATH_MDFILES); do \
 		header=$${f#"$(top_srcdir)/docs/"};\
-		printf "\n---\n\n# $$header \n\n" >> $@ ;\
-		cat $$f >> $@ ;\
+		printf "\n---\n\n## $$header \n\n" >> $@ ;\
+		sed -e 's|^#|##|g' $$f >> $@ ;\
 	done
 
 $(LINKS):

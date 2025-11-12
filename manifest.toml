@@ -1,6 +1,3 @@
-spellername = "Halh Mongolian"
-spellerversion = "0.1.1"
-
 # Name of the speller package in various languages.
 # The default is English + autonym:
 [speller.name]
@@ -22,3 +19,15 @@ legacy_product_codes = [
     { value = "27AEFA51-FC27-4B5F-B060-0BF96A6BA48A", kind = "nsis" },
     { value = "4C40666E-B53A-4197-8750-E34197B49748", kind = "nsis" }
 ]
+
+[package.speller]
+name = "Halh Mongolian"
+version = "0.1.1"
+
+[package.grammar]
+name = "Halh Mongolian"
+version = "0.1.0"
+
+[package.tts-text-proc]
+name = "Halh Mongolian"
+version = "0.1.0"

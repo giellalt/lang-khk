@@ -1,12 +1,12 @@
 The Halh (Khalkha) Mongolian morphology and tools
 ==========================================
 
-[![Maturity](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-khk%2Fgh-pages%2Fbadgedata%2Ffst-maturity.json)](https://giellalt.github.io/MaturityClassification.html)
-![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-khk%2Fgh-pages%2Fbadgedata%2Ffst-lemmacount.json)
+[![Maturity](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-khk%2Fmain%2Fdocs%2Fbadgedata%2Ffst-maturity.json)](https://giellalt.github.io/MaturityClassification.html)
+![Lemma count](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgiellalt%2Flang-khk%2Fmain%2Fdocs%2Fbadgedata%2Ffst-lemmacount.json)
 [![GitHub issues](https://img.shields.io/github/issues-raw/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/issues)
 [![License](https://img.shields.io/github/license/giellalt/lang-khk)](https://github.com/giellalt/lang-khk/blob/main/LICENSE)
-[![Doc Build Status](https://github.com/giellalt/lang-khk/workflows/Docs/badge.svg)](https://github.com/giellalt/lang-khk/actions)
-[![CI/CD Build Status](https://divvun-tc.giellalt.org/api/github/v1/repository/giellalt/lang-khk/main/badge.svg)](https://divvun-tc.giellalt.org/api/github/v1/repository/giellalt/lang-khk/main/latest)
+[![Doc build](https://img.shields.io/github/actions/workflow/status/giellalt/lang-khk/docs.yml?logo=github&label=DocCI)](https://github.com/giellalt/lang-khk/actions/workflows/docs.yml)
+[![Build Status](https://builds.giellalt.org/api/badge/lang-khk?logo=buildkite&label=CoreCI)](https://builds.giellalt.org/pipelines/lang-khk/builds/latest)
 
 Download nightly / CI/CD installation packages for testing (contains the core zhfst file(s)):
 
